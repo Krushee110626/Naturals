@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Summary — Krushee Naturals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --soil:      #3B2A1A;
+    --bark:      #5C3D1E;
+    --moss:      #4A6741;
+    --leaf:      #6B8F4E;
+    --sprout:    #9BBF7A;
+    --cream:     #F5F0E8;
+    --parchment: #EDE5D4;
+    --ochre:     #C4893A;
+    --sand:      #D9C9A8;
+    --white:     #FDFAF5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--soil);
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 44px;
+  }
+  .nav-back {
+    font-size: 0.875rem;
+    color: var(--bark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--moss); }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--soil);
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--moss); }
+
+  /* HERO */
+  .hero {
+    background: var(--parchment);
+    padding: 2rem 5vw 1.5rem;
+    border-bottom: 1px solid var(--sand);
+  }
+  .hero .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--soil);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .hero p {
+    font-size: 0.875rem;
+    color: var(--bark);
+    font-weight: 300;
+  }
+
+  /* SUMMARY SECTION */
+  .summary-section {
+    padding: 2rem 5vw;
+    flex: 1;
+  }
+
+  .summary-date {
+    font-size: 0.75rem;
+    color: var(--bark);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  /* Table */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  .summary-table thead tr {
+    background: var(--parchment);
+    border-bottom: 2px solid var(--sand);
+  }
+  .summary-table thead th {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--moss);
+    padding: 0.65rem 1rem;
+    text-align: left;
+  }
+  .summary-table thead th:last-child {
+    text-align: center;
+  }
+  .summary-table tbody tr {
+    border-bottom: 1px solid var(--sand);
+    transition: background 0.15s;
+  }
+  .summary-table tbody tr:hover {
+    background: var(--cream);
+  }
+  .summary-table tbody tr.zero-row {
+    opacity: 0.4;
+  }
+  .summary-table tbody td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--soil);
+  }
+  .count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background: var(--moss);
+    color: var(--white);
+    margin: 0 auto;
+  }
+  .count-badge.zero {
+    background: var(--sand);
+    color: var(--bark);
+  }
+  .summary-table tfoot tr {
+    background: var(--parchment);
+    border-top: 2px solid var(--sand);
+  }
+  .summary-table tfoot td {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .total-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--soil);
+  }
+  .total-value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    border-radius: 0.5rem;
+    background: var(--ochre);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 auto;
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--bark);
+  }
+  .empty-state svg {
+    margin-bottom: 1rem;
+    opacity: 0.3;
+  }
+  .empty-state p {
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+
+  /* Status pill */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    background: #e8f5e2;
+    color: var(--moss);
+    border: 1px solid var(--sprout);
+    margin-bottom: 1.25rem;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--moss);
+  }
+
+  /* Action buttons */
+  .action-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--moss);
+    color: var(--white);
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--leaf); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--bark);
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1.5px solid var(--sand);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--moss); color: var(--moss); }
+
+  /* WhatsApp message preview */
+  .wa-preview {
+    margin-top: 1.75rem;
+    background: var(--parchment);
+    border: 1px solid var(--sand);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+  .wa-preview .preview-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 0.5rem;
+  }
+  .wa-preview pre {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--soil);
+    white-space: pre-wrap;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #271C10;
+    color: var(--sand);
+    padding: 0.6rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--sand); text-decoration: none; }
+  footer a:hover { color: var(--sprout); }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+  }
+  .footer-brand span { color: var(--sprout); }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    z-index: 200;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+    transition: transform 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+
+  @media (max-width: 480px) {
+    .summary-table thead th,
+    .summary-table tbody td,
+    .summary-table tfoot td {
+      padding: 0.6rem 0.6rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-back" href="plants.html">← Back to Plants</a>
+  <a class="nav-brand" href="index.html">Krushee <span>Naturals</span></a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Plants · Order</div>
+  <h1>Order Summary</h1>
+  <p>Review your selected plant counts before placing your order.</p>
+</div>
+
+<!-- SUMMARY -->
+<section class="summary-section">
+
+  <div class="summary-date" id="summary-date"></div>
+
+  <div class="status-pill">
+    <span class="status-dot"></span> Draft Order
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th style="text-align:center;">Count</th>
+      </tr>
+    </thead>
+    <tbody id="summary-body">
+      <!-- Rows injected by JS -->
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="total-label">Total Plants</td>
+        <td style="text-align:center;">
+          <span class="total-value" id="total-count">0</span>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- WhatsApp message preview -->
+  <div class="wa-preview">
+    <div class="preview-label">WhatsApp Order Message</div>
+    <pre id="wa-message">—</pre>
+  </div>
+
+  <!-- Actions -->
+  <div class="action-row">
+    <a class="btn-primary" id="wa-send-btn" href="#" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Send via WhatsApp
+    </a>
+    <a class="btn-secondary" href="plants.html">← Edit Order</a>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Krushee <span>Naturals</span></div>
+    <div style="margin-top:0.35rem">Plants · Natural Manure · Fruits &nbsp;·&nbsp; Kakinada, India</div>
+  </div>
+  <div style="text-align:right">
+    <div>© 2025 Krushee Naturals. All rights reserved.</div>
+    <div style="margin-top:0.25rem"><a href="mailto:hello@krusheenaturals.in">hello@krusheenaturals.in</a></div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/919989773741" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // ── Product list (must match IDs in plants.html) ──────────────────────────
+  const PRODUCTS = [
+    { id: 'tulasi-count', name: 'Tulasi' },
+    { id: 'beetle-count', name: 'Beetle' },
+    { id: 'lilly-count',  name: 'Lilly'  },
+  ];
+
+  const WA_NUMBER = '919989773741'; // ← replace with actual number
+
+  // ── Read counts from URL params (passed by plants.html) or localStorage ──
+  function getCounts() {
+    const params = new URLSearchParams(window.location.search);
+    return PRODUCTS.map(p => ({
+      name: p.name,
+      count: parseInt(params.get(p.id) || localStorage.getItem(p.id) || '1', 10)
+    }));
+  }
+
+  // ── Render ────────────────────────────────────────────────────────────────
+  function render() {
+    const items = getCounts();
+    const tbody = document.getElementById('summary-body');
+    const totalEl = document.getElementById('total-count');
+    const waMsg = document.getElementById('wa-message');
+    const waSendBtn = document.getElementById('wa-send-btn');
+    const dateEl = document.getElementById('summary-date');
+
+    // Date
+    const now = new Date();
+    dateEl.textContent = 'Generated on ' + now.toLocaleDateString('en-IN', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    }) + ' at ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+    // Table rows
+    let total = 0;
+    tbody.innerHTML = '';
+    items.forEach((item, i) => {
+      const isZero = item.count === 0;
+      total += item.count;
+      const tr = document.createElement('tr');
+      if (isZero) tr.classList.add('zero-row');
+      tr.innerHTML = `
+        <td style="color:var(--bark); font-size:0.8rem;">${i + 1}</td>
+        <td><span class="product-name">${item.name}</span></td>
+        <td style="text-align:center;">
+          <span class="count-badge ${isZero ? 'zero' : ''}">${item.count}</span>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+
+    totalEl.textContent = total;
+
+    // WhatsApp message
+    const dateStr = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    const lines = items
+      .filter(i => i.count > 0)
+      .map(i => `  • ${i.name}: ${i.count}`);
+
+    const msg = lines.length > 0
+      ? `Hello Krushee Naturals 🌿\n\nI'd like to place a plant order (${dateStr}):\n\n${lines.join('\n')}\n\nTotal: ${total} plant${total !== 1 ? 's' : ''}\n\nPlease confirm availability. Thank you!`
+      : 'No products selected yet.';
+
+    waMsg.textContent = msg;
+    waSendBtn.href = lines.length > 0
+      ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`
+      : '#';
+  }
+
+  render();
+</script>
+
+</body>
+</html>
