@@ -567,25 +567,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  // Attach "Add to Cart" buttons to each product card
-  var cards = document.querySelectorAll('.product-card, [class*="product"]');
-  cards.forEach(function(card) {
-    // Try to extract name and price from card
-    var nameEl = card.querySelector('h3, h4, .product-name, [class*="name"]');
-    var priceEl = card.querySelector('[class*="price"], .price');
-    if (!nameEl) return; // skip if no name found
-    var name = nameEl.textContent.trim();
-    var price = priceEl ? priceEl.textContent.replace(/[^0-9]/g, '') : '0';
 
-    // Check if button already exists
-    if (card.querySelector('.kn-add-btn')) return;
-    var btn = document.createElement('button');
-    btn.className = 'kn-add-btn';
-    btn.textContent = 'Add to Order';
-    btn.style.cssText = 'margin-top:0.6rem;padding:0.4rem 1rem;background:#4A6741;color:#fff;border:none;border-radius:1.5rem;cursor:pointer;font-size:0.8rem;font-weight:500;';
-    btn.onclick = function(){ addToCart(name, price); };
-    card.appendChild(btn);
-  });
 });
 </script>
 
