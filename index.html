@@ -3,533 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Krushee Naturals — Plants, Manure & Fruits</title>
+<title>Krushee Naturals — Plants, Coir Products, Manure & Fruits</title>
+<meta name="description" content="Krushee Naturals offers natural plants, coir products, organic manure, and fresh seasonal fruits from Kakinada, Andhra Pradesh. Order via WhatsApp or shop online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --soil:   #3B2A1A;
-    --bark:   #5C3D1E;
-    --moss:   #4A6741;
-    --leaf:   #6B8F4E;
-    --sprout: #9BBF7A;
-    --cream:  #F5F0E8;
-    --parchment: #EDE5D4;
-    --ochre:  #C4893A;
-    --sand:   #D9C9A8;
-    --white:  #FDFAF5;
-  }
-
+  :root { --soil:#3B2A1A; --bark:#5C3D1E; --moss:#4A6741; --leaf:#6B8F4E; --sprout:#9BBF7A; --cream:#F5F0E8; --parchment:#EDE5D4; --ochre:#C4893A; --sand:#D9C9A8; --white:#FDFAF5; --card:#FFFDF9; }
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--soil);
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--sand);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5vw;
-    height: 44px;
-  }
-  .nav-logo {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    line-height: 0;
-    outline: none;
-  }
-  .nav-logo-svg {
-    width: 50%;
-    max-width: 480px;
-    height: auto;
-    overflow: visible;
-    display: flex;
-    align-items: center;
-  }
-  .nav-logo-svg svg {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: var(--bark);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--moss); }
-  .nav-cta {
-    background: var(--moss);
-    color: var(--white) !important;
-    padding: 0.45rem 1.1rem;
-    border-radius: 2rem;
-    font-weight: 500 !important;
-  }
-  .nav-cta:hover { background: var(--leaf); color: var(--white) !important; }
-  .hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--bark); }
-
-  /* HERO */
-  .hero {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    padding: 2rem 5vw;
-    background: var(--cream);
-    position: relative;
-    overflow: hidden;
-    gap: 3rem;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(107,143,78,0.1) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  /* Hero logo visual */
-  .hero-visual {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex: 0 0 auto;
-  }
-  .hero-logo-wrap {
-    width: 340px;
-    max-width: 400px;
-    min-width: 200px;
-  }
-  .hero-logo-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-    mix-blend-mode: multiply;
-  }
-
-  /* Our Story panel */
-  .hero-story {
-    flex: 1 1 0;
-    max-width: 580px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    border-left: 2px solid var(--sand);
-    padding-left: 1.5rem;
-  }
-  .hero-story .story-eyebrow {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ochre);
-    margin-bottom: 0.5rem;
-  }
-  .hero-story h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.3rem, 2.2vw, 1.75rem);
-    font-weight: 700;
-    color: var(--soil);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  .hero-story p {
-    font-size: 0.9rem;
-    color: var(--bark);
-    font-weight: 300;
-    line-height: 1.75;
-    margin-bottom: 0.8rem;
-  }
-  .hero-story p:last-of-type { margin-bottom: 0; }
-
-  /* STRIP */
-  .strip {
-    background: var(--moss);
-    color: var(--white);
-    padding: 0.6rem 5vw;
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-  }
-  .strip-item { 
-    display: flex; 
-    align-items: center; 
-    gap: 0.5rem; 
-    opacity: 0.92;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-  }
-  .strip-dot { width: 6px; height: 6px; background: var(--sprout); border-radius: 50%; flex-shrink: 0; }
-
-  /* SECTION BASE */
-  section { padding: 3rem 5vw; }
-  .section-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ochre);
-    margin-bottom: 0.25rem;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-    font-weight: 700;
-    color: var(--soil);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-  }
-  .section-sub {
-    font-size: 0.9rem;
-    color: var(--bark);
-    font-weight: 300;
-    max-width: 520px;
-    margin-bottom: 2rem;
-  }
-
-  /* PRODUCTS */
-  #products { background: var(--white); }
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  .product-card {
-    background: var(--cream);
-    border: 1px solid var(--sand);
-    border-radius: 1.25rem;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-  }
-  .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(59,42,26,0.1); }
-  .product-body { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; }
-  .product-tag {
-    align-self: flex-start;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--moss);
-    background: rgba(107,143,78,0.12);
-    padding: 0.2rem 0.65rem;
-    border-radius: 2rem;
-    margin-bottom: 0.6rem;
-  }
-  .product-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--soil);
-    margin-bottom: 0.4rem;
-  }
-  .product-desc { font-size: 0.85rem; color: var(--bark); font-weight: 300; line-height: 1.5; margin-bottom: 1rem; flex-grow: 1; }
-  .product-link {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--moss);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    transition: gap 0.2s;
-    margin-top: auto;
-  }
-  .product-link:hover { gap: 0.6rem; }
-
-  /* FOOTER */
-  footer {
-    background: #271C10;
-    color: var(--sand);
-    padding: 2rem 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    font-size: 0.88rem;
-  }
-  footer a { color: var(--sand); text-decoration: none; transition: color 0.2s; }
-  footer a:hover { color: var(--sprout); }
-  .footer-left { text-align: left; }
-  .footer-right { text-align: right; font-size: 0.8rem; opacity: 0.8; }
-
-  /* WHATSAPP FLOAT */
-  .wa-float {
-    position: fixed;
-    bottom: 1.75rem;
-    right: 1.75rem;
-    z-index: 200;
-    background: #25D366;
-    color: white;
-    border-radius: 50%;
-    width: 52px; height: 52px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(37,211,102,0.4);
-    transition: transform 0.2s;
-  }
-  .wa-float:hover { transform: scale(1.08); }
-
-  @media (max-width: 768px) {
-    .hero {
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 2rem 5vw;
-    }
-    .hero-story {
-      border-left: none;
-      border-top: 2px solid var(--sand);
-      padding-left: 0;
-      padding-top: 1.5rem;
-      max-width: 100%;
-    }
-    .hero-logo-wrap { width: 80%; min-width: unset; max-width: 260px; margin: 0 auto; }
-    footer { flex-direction: column; text-align: center; }
-    .footer-left, .footer-right { text-align: center; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; animation: none !important; }
-  }
+  body { font-family:'DM Sans', sans-serif; background:var(--white); color:var(--soil); font-size:16px; line-height:1.7; }
+  a { color:inherit; }
+  nav { position:sticky; top:0; z-index:100; background:rgba(253,250,245,0.96); backdrop-filter:blur(8px); border-bottom:1px solid var(--sand); display:flex; align-items:center; justify-content:space-between; padding:0 5vw; min-height:68px; }
+  .nav-logo { text-decoration:none; display:flex; align-items:center; line-height:0; outline:none; }
+  .nav-logo-svg { width:160px; max-width:100%; height:auto; overflow:visible; display:flex; align-items:center; }
+  .nav-logo-svg img { width:100%; height:auto; display:block; mix-blend-mode:multiply; }
+  .nav-links { display:flex; gap:1.5rem; list-style:none; align-items:center; flex-wrap:wrap; }
+  .nav-links a { font-size:0.92rem; font-weight:500; color:var(--bark); text-decoration:none; letter-spacing:0.01em; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--moss); }
+  .nav-cta { background:var(--moss); color:var(--white) !important; padding:0.7rem 1.1rem; border-radius:999px; font-weight:700 !important; }
+  .nav-cta:hover { background:var(--leaf); color:var(--white) !important; }
+  .topbar { background:var(--moss); color:var(--white); padding:0.55rem 5vw; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; font-size:0.85rem; }
+  .topbar span { display:inline-flex; align-items:center; gap:0.45rem; opacity:0.96; }
+  .hero { display:grid; grid-template-columns:1fr 1.1fr; align-items:center; padding:3rem 5vw; background:linear-gradient(180deg, var(--cream), #fbf8f2); position:relative; overflow:hidden; gap:3rem; }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 75% 30%, rgba(107,143,78,0.10) 0%, transparent 55%); pointer-events:none; }
+  .hero-visual { display:flex; align-items:center; justify-content:center; position:relative; z-index:1; }
+  .hero-logo-wrap { width:min(430px, 100%); }
+  .hero-logo-wrap img { width:100%; height:auto; display:block; mix-blend-mode:multiply; border-radius:1.5rem; }
+  .hero-story { position:relative; z-index:1; max-width:620px; }
+  .story-eyebrow, .section-eyebrow { font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ochre); margin-bottom:0.75rem; }
+  .hero-story h1 { font-family:'Playfair Display', serif; font-size:clamp(2.1rem, 4vw, 4rem); line-height:1.05; color:var(--soil); margin-bottom:1rem; letter-spacing:-0.03em; }
+  .hero-story p { font-size:1rem; color:var(--bark); font-weight:400; line-height:1.75; margin-bottom:0.9rem; max-width:56ch; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:0.9rem; margin-top:1.5rem; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:0.45rem; text-decoration:none; border-radius:999px; padding:0.9rem 1.2rem; font-weight:700; font-size:0.95rem; transition:transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s; }
+  .btn:hover { transform:translateY(-2px); }
+  .btn-primary { background:var(--moss); color:var(--white); border:1px solid var(--moss); }
+  .btn-primary:hover { background:var(--leaf); border-color:var(--leaf); }
+  .btn-secondary { background:transparent; color:var(--moss); border:1px solid var(--sand); }
+  .btn-secondary:hover { border-color:var(--moss); color:var(--soil); }
+  .trust { background:var(--moss); color:var(--white); padding:0.9rem 5vw; }
+  .trust-grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:1rem; max-width:1200px; margin:0 auto; }
+  .trust-item { display:flex; align-items:center; gap:0.7rem; font-size:0.92rem; line-height:1.35; }
+  .trust-icon { width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex:0 0 auto; font-size:1rem; }
+  section { padding:4rem 5vw; }
+  .section-head { max-width:760px; margin-bottom:2rem; }
+  .section-title { font-family:'Playfair Display', serif; font-size:clamp(1.7rem, 3vw, 2.6rem); line-height:1.15; letter-spacing:-0.02em; color:var(--soil); margin-bottom:0.6rem; }
+  .section-sub { font-size:0.98rem; color:var(--bark); max-width:60ch; }
+  .categories, .products-grid, .proof-grid { display:grid; gap:1.25rem; }
+  .categories { grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); }
+  .cat-card, .product-card, .proof-card, .quote-card, .faq-item { background:var(--card); border:1px solid var(--sand); border-radius:1.25rem; overflow:hidden; box-shadow:0 2px 10px rgba(59,42,26,0.04); }
+  .cat-card { padding:1.2rem; min-height:180px; display:flex; flex-direction:column; justify-content:space-between; transition:transform 0.2s, box-shadow 0.2s; text-decoration:none; }
+  .cat-card:hover, .product-card:hover, .proof-card:hover, .quote-card:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(59,42,26,0.08); }
+  .cat-top { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  .cat-emoji { font-size:2rem; line-height:1; }
+  .cat-name { font-family:'Playfair Display', serif; font-size:1.1rem; color:var(--soil); margin-top:0.9rem; }
+  .cat-desc { font-size:0.88rem; color:var(--bark); margin-top:0.4rem; }
+  .cat-link, .product-link, .text-link { font-size:0.9rem; font-weight:700; color:var(--moss); text-decoration:none; }
+  .products-grid { grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
+  .product-card { display:flex; flex-direction:column; }
+  .product-media { background:var(--cream); padding:0.8rem; }
+  .product-media video, .product-media img { display:block; width:100%; border-radius:0.9rem; object-fit:cover; max-height:220px; }
+  .product-body { padding:1.2rem; display:flex; flex-direction:column; flex:1; }
+  .product-tag { align-self:flex-start; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--moss); background:rgba(107,143,78,0.12); padding:0.25rem 0.7rem; border-radius:999px; margin-bottom:0.75rem; }
+  .product-name { font-family:'Playfair Display', serif; font-size:1.18rem; color:var(--soil); margin-bottom:0.45rem; }
+  .product-desc { font-size:0.9rem; color:var(--bark); line-height:1.6; margin-bottom:1rem; flex:1; }
+  .mini-bullets { list-style:none; display:grid; gap:0.45rem; margin:0 0 1rem 0; }
+  .mini-bullets li { font-size:0.88rem; color:var(--bark); display:flex; gap:0.55rem; align-items:flex-start; }
+  .mini-bullets li::before { content:"•"; color:var(--leaf); font-weight:900; line-height:1.2; }
+  .proof-grid { grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); }
+  .proof-card { padding:1.2rem; }
+  .proof-value { font-family:'Playfair Display', serif; font-size:1.35rem; color:var(--soil); margin-bottom:0.4rem; }
+  .proof-label { font-size:0.9rem; color:var(--bark); }
+  .split { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:stretch; }
+  .quote-card { padding:1.4rem; }
+  .quote-card p { color:var(--bark); font-size:0.95rem; line-height:1.7; margin-bottom:1rem; }
+  .quote-author { font-weight:700; color:var(--soil); font-size:0.92rem; }
+  .faq { display:grid; gap:1rem; max-width:900px; }
+  .faq-item { padding:1rem 1.2rem; }
+  .faq-item summary { cursor:pointer; font-weight:700; color:var(--soil); }
+  .faq-item p { margin-top:0.75rem; color:var(--bark); font-size:0.95rem; }
+  .cta-band { background:linear-gradient(135deg, var(--moss), #32472b); color:var(--white); border-radius:1.5rem; padding:2rem; display:grid; grid-template-columns:1.3fr auto; gap:1.5rem; align-items:center; }
+  .cta-band h2 { font-family:'Playfair Display', serif; font-size:clamp(1.5rem, 2.8vw, 2.2rem); line-height:1.15; margin-bottom:0.5rem; }
+  .cta-band p { opacity:0.95; max-width:58ch; }
+  .cta-band .btn-primary { background:var(--white); color:var(--soil); border-color:var(--white); }
+  .cta-band .btn-primary:hover { background:#f4efe3; border-color:#f4efe3; }
+  footer { background:#271C10; color:var(--sand); padding:2.2rem 5vw; }
+  .footer-grid { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:1.5rem; align-items:start; }
+  .footer-title { font-weight:700; color:var(--white); margin-bottom:0.8rem; }
+  footer a { color:var(--sand); text-decoration:none; }
+  footer a:hover { color:var(--sprout); }
+  .footer-links { list-style:none; display:grid; gap:0.45rem; }
+  .footer-note { margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid rgba(217,201,168,0.2); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:0.85rem; opacity:0.9; }
+  .wa-float { position:fixed; bottom:1.75rem; right:1.75rem; z-index:200; background:#25D366; color:white; border-radius:50%; width:56px; height:56px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; text-decoration:none; box-shadow:0 6px 18px rgba(37,211,102,0.35); transition:transform 0.2s; }
+  .wa-float:hover { transform:scale(1.08); }
+  #cartBadge { display:none; position:fixed; bottom:96px; right:22px; background:#c0392b; color:#fff; font-size:0.7rem; font-weight:700; min-width:20px; height:20px; border-radius:50%; text-align:center; line-height:20px; padding:0 4px; z-index:1001; pointer-events:none; }
+  @media (max-width:900px) { .hero { grid-template-columns:1fr; text-align:left; padding-top:2rem; } .trust-grid, .footer-grid, .split, .cta-band { grid-template-columns:1fr; } nav { padding-top:0.75rem; padding-bottom:0.75rem; gap:1rem; flex-wrap:wrap; } .nav-links { width:100%; flex-wrap:wrap; gap:0.9rem 1.2rem; justify-content:flex-start; padding-bottom:0.5rem; } .nav-logo-svg { width:140px; } }
+  @media (max-width:768px) { section { padding:3rem 5vw; } .hero-actions { gap:0.75rem; } .btn { width:100%; } }
+  @media (prefers-reduced-motion:reduce) { *, *::before, *::after { transition:none !important; animation:none !important; } }
 </style>
 </head>
 <body>
-
-<!-- HERO SECTION -->
-<section class="hero">
+<div class="topbar" aria-label="Quick business highlights">
+  <span>🌿 Naturally grown and ethically sourced</span>
+  <span>📍 Kakinada, Andhra Pradesh</span>
+  <span>🚚 WhatsApp orders and local delivery</span>
+</div>
+<nav>
+  <a href="#top" class="nav-logo" aria-label="Krushee Naturals home">
+    <div class="nav-logo-svg"><img src="Logo_transparent.jpg" alt="Krushee Naturals logo"></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="nav-cta" href="#" onclick="return openWA()">WhatsApp Order</a></li>
+  </ul>
+</nav>
+<section class="hero" id="top">
   <div class="hero-visual">
-    <div class="hero-logo-wrap">
-      <img src="Logo_transparent.jpg" alt="Krushee Naturals — Pure, Natural, Rooted">
-    </div>
+    <div class="hero-logo-wrap"><img src="Logo_transparent.jpg" alt="Krushee Naturals — Pure, Natural, Rooted"></div>
   </div>
   <div class="hero-story">
-    <div class="story-eyebrow">Our Story</div>
-    <!--h2>Pure Cultivation, Honest Roots</h2-->
-    <p>At Krushee Naturals, we believe that the best things in life aren't manufactured—they are grown.</p>
-    <p>Based out of Kakinada, Andhra Pradesh, we grow and source plants, organic manure, and fresh fruits the way it has always made sense — naturally. We know where every product comes from, because most of it comes from our own hands.</p>
-    <p>Krushee Naturals was born out of a deep respect for nature and a mission to bring pure, naturally grown, and ethically sourced products directly to your doorstep.</p>
+    <div class="story-eyebrow">Naturally grown. Carefully sourced.</div>
+    <h1>Plants, coir products, manure, and fresh fruits for a greener home.</h1>
+    <p>At Krushee Naturals, we believe the best things in life are grown, not manufactured. We bring natural products from Kakinada directly to your doorstep with a focus on freshness, quality, and trust.</p>
+    <p>From healthy plants to biodegradable coir solutions and organic manure, every product is selected to help your space and soil thrive naturally.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#products">Shop Best Sellers</a>
+      <a class="btn btn-secondary" href="#" onclick="return openWA()">WhatsApp for Availability</a>
+    </div>
   </div>
 </section>
-
-<!-- STRIP HIGHLIGHTS -->
-<!--div class="strip" aria-label="Key highlights">
-  <div class="strip-item">
-    <!--span class="strip-dot"></span>Naturally Grown &amp; Ethically Sourced /-->
-</div-->
-</div>
-
-<!-- PRODUCTS SECTION -->
+<section class="trust" aria-label="Trust signals">
+  <div class="trust-grid">
+    <div class="trust-item"><span class="trust-icon">✓</span><span>No synthetic shortcuts</span></div>
+    <div class="trust-item"><span class="trust-icon">📍</span><span>Based in Kakinada, Andhra Pradesh</span></div>
+    <div class="trust-item"><span class="trust-icon">🚚</span><span>WhatsApp ordering and local delivery support</span></div>
+    <div class="trust-item"><span class="trust-icon">🌱</span><span>Plants, coir, manure, and seasonal fruits</span></div>
+  </div>
+</section>
+<section id="categories">
+  <div class="section-head">
+    <div class="section-eyebrow">Shop by category</div>
+    <h2 class="section-title">Find the right natural product faster</h2>
+    <p class="section-sub">A clean category layout helps visitors scan quickly, compare products, and move straight toward the most relevant item.</p>
+  </div>
+  <div class="categories">
+    <a class="cat-card" href="plants.html"><div class="cat-top"><span class="cat-emoji">🪴</span><span class="cat-link">Explore →</span></div><div><div class="cat-name">Plants</div><div class="cat-desc">Indoor, outdoor, flowering, and air-purifying varieties.</div></div></a>
+    <a class="cat-card" href="#products"><div class="cat-top"><span class="cat-emoji">🥥</span><span class="cat-link">Explore →</span></div><div><div class="cat-name">Coir Pots</div><div class="cat-desc">Biodegradable pots for seedlings and transplanting.</div></div></a>
+    <a class="cat-card" href="#products"><div class="cat-top"><span class="cat-emoji">🌿</span><span class="cat-link">Explore →</span></div><div><div class="cat-name">Mulch Mats</div><div class="cat-desc">Moisture retention, weed suppression, and soil protection.</div></div></a>
+    <a class="cat-card" href="#products"><div class="cat-top"><span class="cat-emoji">🧱</span><span class="cat-link">Explore →</span></div><div><div class="cat-name">Cocopeat</div><div class="cat-desc">Excellent aeration and water retention for potting and hydroponics.</div></div></a>
+    <a class="cat-card" href="manure.html"><div class="cat-top"><span class="cat-emoji">♻️</span><span class="cat-link">Explore →</span></div><div><div class="cat-name">Organic Manure</div><div class="cat-desc">Compost and vermicompost for healthier soil and growth.</div></div></a>
+    <a class="cat-card" href="fruits.html"><div class="cat-top"><span class="cat-emoji">🍊</span><span class="cat-link">Explore →</span></div><div><div class="cat-name">Seasonal Fruits</div><div class="cat-desc">Naturally ripened fruits with authentic seasonal flavour.</div></div></a>
+  </div>
+</section>
 <section id="products">
-  <div class="section-eyebrow">What we grow</div>
-  <h2 class="section-title">Our products</h2>
-  <p class="section-sub">Everything we offer is naturally cultivated — no synthetic inputs, no shortcuts.</p>
-  
+  <div class="section-head">
+    <div class="section-eyebrow">Best sellers</div>
+    <h2 class="section-title">Featured products</h2>
+    <p class="section-sub">Lead with your most useful and highest-interest items, then make it easy to take action from each card.</p>
+  </div>
   <div class="products-grid">
-    <!-- Card 1 -->
-    <div class="product-card">
-      <div style="padding: 0.75rem; background: var(--cream);">
-        <video controls width="100%" preload="metadata" style="display:block; border-radius: 0.75rem; max-height: 200px; object-fit: cover;">
-          <source src="https://pub-2ee2689c48cd4f9a8ca5177db0bead0e.r2.dev/VID-20260615-WA0001.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="product-body">
-        <span class="product-tag">Products</span>
-        <div class="product-name">Indoor &amp; outdoor plants</div>
-        <p class="product-desc">From air-purifying indoor plants to flowering garden varieties — healthy, well-rooted, and ready to thrive in your space.</p>
-        <a href="plants.html" class="product-link">Explore →</a>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="product-card">
-      <div style="padding: 0.75rem; background: var(--cream); display:flex; align-items:center; justify-content:center; min-height:216px;">
-        <span style="font-size:4rem;" role="img" aria-label="Coir Pot">🪴</span>
-      </div>
-      <div class="product-body">
-        <span class="product-tag">Coir Products</span>
-        <div class="product-name">Coir Pots</div>
-        <p class="product-desc">Biodegradable coconut coir pots — ideal for seedling propagation and transplanting. Roots grow through naturally; no plastic waste.</p>
-        <a href="#" class="product-link">Explore →</a>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="product-card">
-      <div style="padding: 0.75rem; background: var(--cream); display:flex; align-items:center; justify-content:center; min-height:216px;">
-        <span style="font-size:4rem;" role="img" aria-label="Mulch Mat">🌿</span>
-      </div>
-      <div class="product-body">
-        <span class="product-tag">Coir Products</span>
-        <div class="product-name">Coir Mulch Mats</div>
-        <p class="product-desc">Natural coir mulch mats for moisture retention, weed suppression, and soil temperature regulation — durable and fully biodegradable.</p>
-        <a href="#" class="product-link">Explore →</a>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="product-card">
-      <div style="padding: 0.75rem; background: var(--cream); display:flex; align-items:center; justify-content:center; min-height:216px;">
-        <span style="font-size:4rem;" role="img" aria-label="Cocopeat">🥥</span>
-      </div>
-      <div class="product-body">
-        <span class="product-tag">Coir Products</span>
-        <div class="product-name">Cocopeat</div>
-        <p class="product-desc">Premium cocopeat growing medium — excellent water retention, aeration, and pH-neutral composition. Perfect for potting mixes and hydroponics.</p>
-        <a href="#" class="product-link">Explore →</a>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="product-card">
-      <div style="padding: 0.75rem; background: var(--cream);">
-        <video controls width="100%" preload="metadata" style="display:block; border-radius: 0.75rem; max-height: 200px; object-fit: cover;">
-          <source src="https://pub-2ee2689c48cd4f9a8ca5177db0bead0e.r2.dev/VID20241024092727.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="product-body">
-        <span class="product-tag">Natural Manure</span>
-        <div class="product-name">Organic &amp; natural manure</div>
-        <p class="product-desc">100% organic compost and vermicompost — rich in nutrients to improve soil health and boost plant growth without chemicals.</p>
-        <a href="manure.html" class="product-link">Explore →</a>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="product-card">
-      <div style="padding: 0.75rem; background: var(--cream);">
-        <video controls width="100%" preload="metadata" style="display:block; border-radius: 0.75rem; max-height: 200px; object-fit: cover;">
-          <!-- Tip: Swap this placeholder file out with your distinct fruit/farm video asset when ready -->
-          <source src="https://pub-2ee2689c48cd4f9a8ca5177db0bead0e.r2.dev/VID20241024092727.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="product-body">
-        <span class="product-tag">Fruits</span>
-        <div class="product-name">Fresh seasonal fruits</div>
-        <p class="product-desc">Naturally ripened, farm-fresh fruits with no artificial ripening agents. Seasonal availability, full flavour, and genuine freshness.</p>
-        <a href="fruits.html" class="product-link">Explore →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-left">
-    <div style="margin-bottom: 0.4rem;"><a href="mailto:hello@krusheenaturals.in">hello@krusheenaturals.in</a></div>
-    <div>Kakinada, Andhra Pradesh, India</div>
-  </div>
-  <div class="footer-right">
-    &copy; <span id="yr"></span> Krushee Naturals. All rights reserved.
-  </div>
-</footer>
-
-<!-- WHATSAPP FLOAT -->
-<a class="wa-float" id="waBtn" href="#" onclick="return openWA()" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- CART BADGE -->
-<div id="cartBadge" style="
-  display:none;
-  position:fixed;
-  bottom:92px;
-  right:22px;
-  background:#c0392b;
-  color:#fff;
-  font-size:0.7rem;
-  font-weight:700;
-  min-width:20px;
-  height:20px;
-  border-radius:50%;
-  text-align:center;
-  line-height:20px;
-  padding:0 4px;
-  z-index:1001;
-  pointer-events:none;
-">0</div>
-
-<script>
-// ─── Cart State ───────────────────────────────────────────────────────────────
-var cart = {};  
-
-function addToCart(name, price) {
-  if (!cart[name]) cart[name] = { qty: 0, price: price };
-  cart[name].qty += 1;
-  updateCartBadge();
-  showToast('Added: ' + name);
-}
-
-function updateCartBadge() {
-  var total = Object.values(cart).reduce(function(acc, v){ return acc + v.qty; }, 0);
-  var badge = document.getElementById('cartBadge');
-  if (total > 0) {
-    badge.textContent = total;
-    badge.style.display = 'block';
-  } else {
-    badge.style.display = 'none';
-  }
-}
-
-function openWA() {
-  var items = Object.entries(cart).filter(function(e){ return e[1].qty > 0; });
-  var phone = '919989773741'; 
-  var msg;
-  if (items.length === 0) {
-    msg = 'Hello! I am interested in your plants and organic produce. Please help me.';
-  } else {
-    var lines = items.map(function(e){
-      return e[1].qty + ' x ' + e[0] + ' (₹' + e[1].price + ' each)';
-    });
-    msg = 'Hello Krushee Naturals! I would like to order:\n' + lines.join('\n') + '\n\nPlease confirm availability and delivery.';
-  }
-  var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
-  window.open(url, '_blank', 'noopener');
-  return false;
-}
-
-function showToast(msg) {
-  var t = document.getElementById('kn-toast');
-  if (!t) {
-    t = document.createElement('div');
-    t.id = 'kn-toast';
-    t.style.cssText = 'position:fixed;bottom:160px;right:22px;background:rgba(74,103,65,0.95);color:#fff;padding:0.5rem 1rem;border-radius:1rem;font-size:0.8rem;z-index:1002;opacity:0;transition:opacity 0.3s;pointer-events:none;';
-    document.body.appendChild(t);
-  }
-  t.textContent = msg;
-  t.style.opacity = '1';
-  setTimeout(function(){ t.style.opacity = '0'; }, 2000);
-}
-
-// Dynamic footer year injection
-document.addEventListener('DOMContentLoaded', function(){
-  var yr = document.getElementById('yr');
-  if (yr) yr.textContent = new Date().getFullYear();
-});
-</script>
-
-</body>
-</html>
+    <div class="product-card"><div class="product-media"><video controls width="100%" preload="metadata"><source src="https://pub-2ee2689c48cd4f9a8ca5177db0bead0e.r2.dev/VID-20260615-WA0001.mp4" type="video/mp4"></video></div><div class="product-body"><span class="product-tag">Plants</span><div class="product-name">Indoor & outdoor plants</div><p class="product-desc">Healthy, well-rooted, and ready to thrive in your space. Ideal for gifting, homes, and gardens.</p><ul class="mini-bullets"><li>Air-purifying and flowering varieties</li><li>Good for homes, balconies, and gardens</li><li>Available via WhatsApp inquiry</li></ul><a href="plants.html" class="product-link">View plants →</a></div></div>
+    <div class="product-card"><div class="product-media" style="display:flex;align-items:center;justify-content:center;min-height:240px;"><span style="font-size:4rem;" role="img" aria-label="Coir Pot">🪴</span></div><div c
